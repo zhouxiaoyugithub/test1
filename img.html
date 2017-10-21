@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> tooltip</title>
+    <style type="text/css">
+        #box{
+            margin-left: 600px;
+            width: 400px;
+            height:400px;
+            background-color:lightblue;
+            position:relative;
+        }
+        p{
+            z-index:999;
+            position: absolute;
+            left:50%;
+            top: 50%;
+        }
+        #tooltip{
+            z-index: 1000;
+            position: relative;
+            top:0;
+            left:0;
+            display:none;
+            width: 200px;
+            height: 35px;
+            line-height: 35px;
+            background-color:#eee;
+        }
+    </style>
+</head>
+
+<body>
+<div id="box">
+    <p >鼠标快过来呀</p>
+    <div id="tooltip">~\(≧▽≦)/~啦啦啦</div>
+</div>
+</body>
+
+<script type="text/javascript">
+    var box = document.getElementById('box');
+    var tooltip = document.getElementById('tooltip');
+
+    box.onmousemove = function(e){
+        e = e ? e : window.event;
+        var x = e.clientX - box.offsetLeft;
+        var y = e.clientY - box.clientTop;
+
+        tooltip.style.display = "block";
+        tooltip.style.left = x + "px";
+        tooltip.style.top = y + "px";
+    };
+    box.onmouseout = function () {
+        tooltip.style.display = "none"
+    };
+</script>
+</html>
